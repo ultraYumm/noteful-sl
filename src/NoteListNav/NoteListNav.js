@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import { countNotesForFolder } from '../notes-helpers'
 import './NoteListNav.css'
+import NoteContext from '../App/NoteContext';
 
-export default function NoteListNav(props) {
+class NoteListNav extends Component {
+  static contextType = NoteContext;
+  
+  render () {
+    const noteContext = this.context
+    console.log(noteContext)
+    
+  
+
   return (
     <div className='NoteListNav'>
       <ul className='NoteListNav__list'>
-        {props.folders.map(folder =>
+        {noteContext.folders.map(folder =>
           <li key={folder.id}>
             <NavLink
               className='NoteListNav__folder-link'
               to={`/folder/${folder.id}`}
             >
               <span className='NoteListNav__num-notes'>
-                {countNotesForFolder(props.notes, folder.id)}
+                {countNotesForFolder(noteContext.notes, folder.id)}
               </span>
               {folder.name}
             </NavLink>
@@ -39,6 +48,8 @@ export default function NoteListNav(props) {
   )
 }
 
-NoteListNav.defaultProps = {
-  folders: []
+
 }
+
+
+export default NoteListNav;
