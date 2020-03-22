@@ -19,15 +19,11 @@ class App extends Component {
         this.setState({
           bookmarks: [ ...this.state.bookmarks, bookmark ],
         })
-      }
-
-    addBookmark = bookmark => {
-        this.setState({
-          bookmarks: [ ...this.state.bookmarks, bookmark ],
-        })
       }*/
 
-      deleteNote = noteId => {
+   
+
+            deleteNote = noteId => {
         const newNotes = this.state.notes.filter(nt =>
              nt.id !== noteId
             )
@@ -36,6 +32,28 @@ class App extends Component {
             })
           }
       
+          handleAddNote = (noteName, noteContent, /*noteFolder, */folderId) => {
+            console.log(noteName, noteContent, /*noteFolder, */folderId)
+        
+            const newNotesArray = [
+              ...this.state.notes,
+              {name: noteName, 
+              content: noteContent,
+              folderId: folderId},
+              ]
+        
+            /*const newFolder = [
+              ...this.state.folders,
+              {name: noteFolder,
+              id: folderId},
+              
+            ]*/
+      
+            this.setState({
+              /*folders: newFolder,*/
+              notes: newNotesArray
+                    })
+          };
       
 
           componentDidMount() {
@@ -102,7 +120,7 @@ class App extends Component {
             notes: this.state.notes,
             //addNote: this.addNote,
             deleteNote: this.deleteNote,
-            deleteFolder: this.deleteFolder
+           
             }
            
         return (

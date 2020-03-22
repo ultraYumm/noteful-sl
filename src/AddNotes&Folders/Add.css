@@ -1,0 +1,73 @@
+.Note {
+    background-color: #102541;
+    border: none;
+}
+
+.noteList {
+    padding-top: 350px;
+    margin-left: 0px;
+}
+
+
+
+.noteButton {
+    background-color: #010d1e;
+    font-size: 80px;
+    font-weight: bold;
+    color: #cacaca;
+    text-align: left;
+    width: 2000px;
+    border: none;
+}
+
+
+input {
+    width: 250px;
+    height: 100px;
+}
+
+select {
+    width: 250px;
+    height: 100px;
+    color: black;
+    font-size: 60px;
+}
+
+form {
+    width: 300px;
+}
+
+
+label {
+    color: #cacaca;
+    font-size: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.inputBox {
+    background-color: #1D3656;
+    width: 300px;
+    padding: 20px;
+}
+
+
+.addNoteFormButton {
+    background-color: #010d1e;
+    width: 250px;
+    height: 100px;
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    color: #cacaca;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+.inputItems {
+    padding-top: 50px;
+    list-style: none;
+}
+
+  

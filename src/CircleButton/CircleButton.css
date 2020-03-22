@@ -21,3 +21,7 @@ a.NavCircleButton {
 .NavCircleButton:hover {
   cursor: pointer;
 }
+
+button {
+  background-color: none;
+}
