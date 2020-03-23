@@ -64,7 +64,7 @@ class AddNoteForm extends React.Component {
 
     const onSubmitForm = (e) => {
       e.preventDefault()
-        this.context.handleAddNote(e.target.itemToAdd.value, e.target.contentToAdd.value, /*this.state.folderSelection, */this.state.folderId)
+        this.context.handleAdd(e.target.itemToAdd.value, e.target.contentToAdd.value, /*this.state.folderSelection, */this.state.folderId)
         this.props.onAddNote()
     }
 

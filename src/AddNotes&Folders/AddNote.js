@@ -10,12 +10,22 @@ import './Add.css';
 
 class AdNote extends React.Component {
 
+  renderAddForm() {
+    return (
+    <Route 
+      path='/add-note'
+      render = { () =>
+            
+        <AddNoteForm
+        />}/>)
+  }
+
     
   render() {
 
         return (
-          <div>
-            <button className ='Note'
+          <div > 
+            <button className ='AddNoteButton'
             type= "submit"
              >
             <CircleButton
@@ -29,12 +39,9 @@ class AdNote extends React.Component {
             Note
           </CircleButton>
             </button>
-
-          <AddNoteForm/>
-           
-            
-
-          </div>
+            <div><AddNoteForm
+        /></div>        
+            </div>
   
         )
   }

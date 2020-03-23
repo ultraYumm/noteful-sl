@@ -12,14 +12,8 @@ import './App.css';
 class App extends Component {
     state = {
         notes: [],
-        folders: []
+        folders: [],
     };
-
-   /* addBookmark = bookmark => {
-        this.setState({
-          bookmarks: [ ...this.state.bookmarks, bookmark ],
-        })
-      }*/
 
    
 
@@ -32,29 +26,38 @@ class App extends Component {
             })
           }
       
-          handleAddNote = (noteName, noteContent, /*noteFolder, */folderId) => {
-            console.log(noteName, noteContent, /*noteFolder, */folderId)
+          handleAdd = (noteName, noteContent, noteFolder, folderId) => {
+            console.log(noteName, noteContent, noteFolder, folderId)
         
             const newNotesArray = [
               ...this.state.notes,
               {name: noteName, 
               content: noteContent,
-              folderId: folderId},
+              folderId: folderId}
+              //modified: 
               ]
         
-            /*const newFolder = [
-              ...this.state.folders,
-              {name: noteFolder,
-              id: folderId},
-              
-            ]*/
-      
+                  
             this.setState({
-              /*folders: newFolder,*/
+             
               notes: newNotesArray
                     })
           };
       
+          handleAddFolder = (folderName) => {
+            console.log(folderName)
+        
+             const newFolderArray = [
+              ...this.state.folders,
+              {name: folderName}
+            ]
+      
+            this.setState({
+              folders: newFolderArray,
+             })
+          };
+      
+
 
           componentDidMount() {
             Promise.all([
@@ -118,7 +121,7 @@ class App extends Component {
             const contextValue = {
             folders: this.state.folders,
             notes: this.state.notes,
-            //addNote: this.addNote,
+            handleAdd: this.handleAdd,
             deleteNote: this.deleteNote,
            
             }
