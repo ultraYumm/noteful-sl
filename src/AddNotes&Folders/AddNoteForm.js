@@ -2,16 +2,7 @@ import React from "react";
 import './Add.css'
 import NoteContext from '../App/NoteContext';
 
-/*export default function NotefulForm(props) {
-  const { className, ...otherProps } = props
-  return (
-    <form
-      className={['Noteful-form', className].join(' ')}
-      action='#'
-      {...otherProps}
-    />
-  )
-}*/
+
 
 
 class AddNoteForm extends React.Component {
@@ -94,6 +85,7 @@ class AddNoteForm extends React.Component {
             aria-label='content'
           />
             </li>
+
 
           <li className = "inputItems">   
           <label>Folder</label>

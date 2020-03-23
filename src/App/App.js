@@ -26,15 +26,29 @@ class App extends Component {
             })
           }
       
-          handleAdd = (noteName, noteContent, noteFolder, folderId) => {
+
+          ShowCurrentDate=()=>{
+ 
+            var date = new Date().getDate();
+            var month = new Date().getMonth() + 1;
+            var year = new Date().getFullYear();         
+       return (date, month, year)
+
+           }
+          
+           handleAdd = (noteName, noteContent, noteFolder, folderId) => {
             console.log(noteName, noteContent, noteFolder, folderId)
-        
-            const newNotesArray = [
+            
+            //const modified = {ShowCurrentDate()}
+
+           
+              const newNotesArray = [
               ...this.state.notes,
               {name: noteName, 
               content: noteContent,
-              folderId: folderId}
-              //modified: 
+              folderId: folderId,
+              //modified: modified
+          }
               ]
         
                   
@@ -122,6 +136,7 @@ class App extends Component {
             folders: this.state.folders,
             notes: this.state.notes,
             handleAdd: this.handleAdd,
+            handleAddFolder: this.handleAddFolder,
             deleteNote: this.deleteNote,
            
             }

@@ -8,7 +8,7 @@ import './Add.css';
 
 
 
-class AdNote extends React.Component {
+class AddNote extends React.Component {
 
   renderAddForm() {
     return (
@@ -39,7 +39,7 @@ class AdNote extends React.Component {
             Note
           </CircleButton>
             </button>
-            <div><AddNoteForm
+            <div>{this.renderAddForm()}
         /></div>        
             </div>
   
@@ -47,7 +47,7 @@ class AdNote extends React.Component {
   }
 }
 
-export default AdNote;
+export default AddNote;
 
             /*<Route
             path ='/add-note'
