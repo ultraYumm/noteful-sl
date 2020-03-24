@@ -9,14 +9,6 @@ import './Add.css';
 
 
 class AddFolder extends React.Component {
-
-  renderAddForm() {
-    return (
-    <Route 
-      path='/add-folder'
-      component={AddFolderForm}/>)
-  }
-
     
   render() {
 
@@ -36,8 +28,6 @@ class AddFolder extends React.Component {
           Folder
         </CircleButton>
             </button>
-            <div><AddFolderForm
-        /></div>   
             </div>
   
         )

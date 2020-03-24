@@ -1,6 +1,8 @@
 import React from "react";
 import './Add.css'
 import NoteContext from '../App/NoteContext';
+import { withRouter } from 'react-router-dom';
+import config from '../config'
 
 
 
@@ -43,10 +45,15 @@ class AddNoteForm extends React.Component {
         folderId = folderIds[2]
       }
       
+
+      //let DateGenerator = require('random-date-generator');
+      //let modified = DateGenerator.getRandomDate();
+      
       this.setState({ 
         
         folderSelection: value,
         folderId: folderId
+        /*modified: modified,*/
       
       });
     }
@@ -55,8 +62,30 @@ class AddNoteForm extends React.Component {
 
     const onSubmitForm = (e) => {
       e.preventDefault()
-        this.context.handleAdd(e.target.itemToAdd.value, e.target.contentToAdd.value, /*this.state.folderSelection, */this.state.folderId)
-        this.props.onAddNote()
+
+      /*fetch(`${config.API_ENDPOINT}/notes/`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+          return res.json()
+        })
+        .then(() => {*/
+          this.context.handleAdd(e.target.itemToAdd.value, e.target.contentToAdd.value, /*this.state.folderSelection, */this.state.folderId)
+         this.props.onAddNote()
+    
+        this.props.history.push('/')
+
+        /*})
+        .catch(error => {
+          console.error({ error })
+        })*/
+
+        
     }
 
 
@@ -117,4 +146,4 @@ class AddNoteForm extends React.Component {
   }
 }
 
-export default AddNoteForm;
+export default withRouter (AddNoteForm);

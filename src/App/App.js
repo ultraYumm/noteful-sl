@@ -6,6 +6,8 @@ import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import NoteContext from './NoteContext';
+import AddNoteForm from '../AddNotes&Folders/AddNoteForm';
+import AddFolderForm from '../AddNotes&Folders/AddFolderForm';
 import config from '../config';
 import './App.css';
 
@@ -26,29 +28,15 @@ class App extends Component {
             })
           }
       
-
-          ShowCurrentDate=()=>{
- 
-            var date = new Date().getDate();
-            var month = new Date().getMonth() + 1;
-            var year = new Date().getFullYear();         
-       return (date, month, year)
-
-           }
-          
-           handleAdd = (noteName, noteContent, noteFolder, folderId) => {
-            console.log(noteName, noteContent, noteFolder, folderId)
-            
-            //const modified = {ShowCurrentDate()}
-
-           
-              const newNotesArray = [
+          handleAdd = (noteName, noteContent, folderId) => {
+            console.log(noteName, noteContent, folderId)
+        
+            const newNotesArray = [
               ...this.state.notes,
               {name: noteName, 
               content: noteContent,
-              folderId: folderId,
-              //modified: modified
-          }
+              folderId: folderId}
+              //modified: 
               ]
         
                   
@@ -106,8 +94,20 @@ class App extends Component {
                         />
                     ))}
                     <Route path="/note/:noteId" component={NotePageNav} />
-                    <Route path="/add-folder" component={NotePageNav} />
-                    <Route path="/add-note" component={NotePageNav} />
+                    <Route path="/add-folder" 
+                    render={({ history }) => {
+                    console.log(history)
+                    return <AddFolderForm
+                    onAddFolder={this.AddFolderForm}
+                    onSubmit= {() => history.push('/')}
+                                 />
+                       }}
+                    
+                    
+                    component={AddFolderForm} />
+                    
+                    
+                    <Route path="/add-note" component={AddNoteForm} />
                 </>
             );
         }
@@ -129,7 +129,6 @@ class App extends Component {
         }
 
 
-     //NoteContext should be before render?
     render() {
 
             const contextValue = {

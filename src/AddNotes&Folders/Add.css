@@ -12,8 +12,10 @@
 
 .noteList {
     padding-top: 350px;
-    margin-left: 0px;
+    margin-left: 0;
+    z-index: 1000;
 }
+
 
 .noteButton {
     background-color: #102541;
@@ -23,6 +25,7 @@
     text-align: left;
     width: 2000px;
     border: none;
+  
 }
 
 
@@ -40,6 +43,7 @@ select {
 
 form {
     width: 300px;
+    z-index: 1000;
 }
 
 

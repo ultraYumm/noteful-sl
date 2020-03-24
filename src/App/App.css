@@ -8,6 +8,7 @@
   grid-template-columns: 1fr 2.3fr;
   grid-template-rows: 120px 1fr;
   min-height: 100vh;
+  z-index: 0;
 }
 
 .App__nav {
@@ -16,6 +17,7 @@
   grid-area: sidebar;
   height: 100vh;
   overflow: auto;
+  z-index: 0;
 }
 
 .App__header {
@@ -37,4 +39,5 @@
   grid-area: main;
   height: calc(100vh - 120px);
   overflow: auto;
+  z-index: 0;
 }
