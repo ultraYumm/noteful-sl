@@ -46,46 +46,58 @@ class AddNoteForm extends React.Component {
       }
       
 
-      //let DateGenerator = require('random-date-generator');
-      //let modified = DateGenerator.getRandomDate();
+      let DateGenerator = require('random-date-generator');
+      let modified = DateGenerator.getRandomDate();
+
+      const newRandomNoteId =  Math.random().toString(36).substring(2, 4)
+
+      
+      
+        
       
       this.setState({ 
-        
+        id: newRandomNoteId,
         folderSelection: value,
-        folderId: folderId
-        /*modified: modified,*/
+        folderId: folderId,
+        modified: modified
       
       });
     }
         
     const options = folderList.map(item => {return item})
+    
+
 
     const onSubmitForm = (e) => {
       e.preventDefault()
 
-      /*fetch(`${config.API_ENDPOINT}/notes/`, {
+      fetch(`${config.API_ENDPOINT}/notes/`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
         },
       })
-        .then(res => {
-          if (!res.ok)
-            return res.json().then(e => Promise.reject(e))
-          return res.json()
-        })
-        .then(() => {*/
-          this.context.handleAdd(e.target.itemToAdd.value, e.target.contentToAdd.value, /*this.state.folderSelection, */this.state.folderId)
-         this.props.onAddNote()
-    
-        this.props.history.push('/')
+      .then(res => {
+        if (!res.ok) {
+          // get the error message from the response,
+          return res.json().then(error => {
+            // then throw it
+            throw error
+          })
+        }
+        return res.json()
+      })
+        .then(() => {
+          this.context.handleAdd(this.state.id,e.target.itemToAdd.value, this.state.modified, this.state.folderId, e.target.contentToAdd.value)
+                 
 
-        /*})
+        })
         .catch(error => {
           console.error({ error })
-        })*/
+        })
 
-        
+        this.props.onAddNote()
+        this.props.history.push('/')
     }
 
 
@@ -120,7 +132,7 @@ class AddNoteForm extends React.Component {
           <label>Folder</label>
             <select 
             id="folder" 
-            //name="folderToGo"
+           
             onChange={e => changeSelection(e.target.value)}
             >
             <option>...</option>

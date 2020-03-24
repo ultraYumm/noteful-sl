@@ -28,30 +28,35 @@ class App extends Component {
             })
           }
       
-          handleAdd = (noteName, noteContent, folderId) => {
-            console.log(noteName, noteContent, folderId)
+          handleAdd = (noteId,noteName, modified, folderId, noteContent, ) => {
+          
         
             const newNotesArray = [
               ...this.state.notes,
-              {name: noteName, 
-              content: noteContent,
-              folderId: folderId}
-              //modified: 
+              {
+                id: noteId,
+                name: noteName, 
+                modified: modified,
+                folderId: folderId,
+                content: noteContent,
+                
+            }
               ]
-        
-                  
+                                       
             this.setState({
              
               notes: newNotesArray
                     })
           };
       
-          handleAddFolder = (folderName) => {
+          handleAddFolder = (folderId, folderName) => {
             console.log(folderName)
         
              const newFolderArray = [
               ...this.state.folders,
-              {name: folderName}
+              { 
+                id: folderId,
+                name: folderName}
             ]
       
             this.setState({
@@ -94,6 +99,7 @@ class App extends Component {
                         />
                     ))}
                     <Route path="/note/:noteId" component={NotePageNav} />
+
                     <Route path="/add-folder" 
                     render={({ history }) => {
                     console.log(history)
@@ -101,13 +107,17 @@ class App extends Component {
                     onAddFolder={this.AddFolderForm}
                     onSubmit= {() => history.push('/')}
                                  />
-                       }}
+                       }}/>
+                                      
                     
-                    
-                    component={AddFolderForm} />
-                    
-                    
-                    <Route path="/add-note" component={AddNoteForm} />
+                    <Route path="/add-note" 
+                    render={({ history }) => {
+                    console.log(history)
+                    return <AddNoteForm
+                    onAddNote={this.AddNoteForm}
+                    onSubmit= {() => history.push('/')}
+                                 />
+                       }}/>
                 </>
             );
         }
@@ -139,6 +149,8 @@ class App extends Component {
             deleteNote: this.deleteNote,
            
             }
+
+            console.log(contextValue)
            
         return (
             <div className="App">

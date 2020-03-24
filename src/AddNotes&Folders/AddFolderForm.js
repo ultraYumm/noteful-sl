@@ -1,6 +1,7 @@
 import React from "react";
 import './Add.css'
 import NoteContext from '../App/NoteContext';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -12,6 +13,7 @@ class AddFolderForm extends React.Component {
     onAddFolder: () => {},
 
   }
+ 
   static contextType = NoteContext;
   
      
@@ -19,10 +21,13 @@ class AddFolderForm extends React.Component {
 
     const noteContext = this.context
     console.log(noteContext)
+ 
+    const newRandomFolderId =  Math.random().toString(36).substring(10, 2)
 
      const onSubmitForm = (e) => {
         e.preventDefault()
-          this.context.handleAddFolder(e.target.folderToAdd.value)
+          this.context.handleAddFolder(newRandomFolderId, e.target.folderToAdd.value)
+          this.props.history.push('/')
           this.props.onAddFolder()
       }
 
@@ -60,4 +65,4 @@ class AddFolderForm extends React.Component {
   }
 }
 
-export default AddFolderForm;
+export default withRouter (AddFolderForm);
