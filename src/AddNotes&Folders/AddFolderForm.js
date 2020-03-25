@@ -2,6 +2,7 @@ import React from "react";
 import './Add.css'
 import NoteContext from '../App/NoteContext';
 import { withRouter } from 'react-router-dom';
+import config from '../config'
 
 
 
@@ -26,10 +27,36 @@ class AddFolderForm extends React.Component {
 
      const onSubmitForm = (e) => {
         e.preventDefault()
-          this.context.handleAddFolder(newRandomFolderId, e.target.folderToAdd.value)
-          this.props.history.push('/')
-          this.props.onAddFolder()
-      }
+
+        let folderToAdd =  e.target.folderToAdd.value
+
+        fetch(`${config.API_ENDPOINT}/folders/`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+          })
+
+          .then(res => {
+            if (!res.ok) {
+              // get the error message from the response,
+              
+              return res.json().then(error => {
+                // then throw it
+                throw error
+              })
+            }
+            return res.json()
+          })
+            .then(() => {
+
+
+          this.context.handleAddFolder(newRandomFolderId, folderToAdd)
+        
+      })
+      this.props.history.push('/')
+      this.props.onAddFolder()
+    }
 
 
     return (
@@ -46,6 +73,8 @@ class AddFolderForm extends React.Component {
             name='folderToAdd'
             type='text'
             aria-label='name'
+            placeholder='Great'
+            required
            />
            </li>
 

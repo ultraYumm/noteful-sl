@@ -28,19 +28,19 @@ class App extends Component {
             })
           }
       
-          handleAdd = (noteId,noteName, modified, folderId, noteContent, ) => {
+          handleAdd = (note) => {
           
         
             const newNotesArray = [
               ...this.state.notes,
-              {
-                id: noteId,
-                name: noteName, 
-                modified: modified,
-                folderId: folderId,
-                content: noteContent,
+              note
+                //id: noteId,
+                //name: noteName, 
+                //modified: modified,
+                //folderId: folderId,
+                //content: noteContent,
                 
-            }
+            
               ]
                                        
             this.setState({

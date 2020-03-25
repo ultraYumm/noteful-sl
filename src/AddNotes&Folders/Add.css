@@ -13,7 +13,7 @@
 .noteList {
     padding-top: 350px;
     margin-left: 0;
-    z-index: 1000;
+  
 }
 
 
@@ -44,6 +44,7 @@ select {
 form {
     width: 300px;
     z-index: 1000;
+    padding-left: 400px;
 }
 
 

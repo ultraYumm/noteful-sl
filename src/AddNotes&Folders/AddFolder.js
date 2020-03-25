@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import {Route, Switch, Link} from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import CircleButton from '../CircleButton/CircleButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import AddFolderForm from './AddFolderForm';
 import './Add.css';
 
 
