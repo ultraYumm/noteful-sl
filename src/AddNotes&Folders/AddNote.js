@@ -23,24 +23,17 @@ class AddNote extends React.Component {
             to='/add-note'
             type='button'
             className='NoteListMain__add-note-button'
-          >
+            >
             <FontAwesomeIcon icon='plus' />
             <br />
             Note
-          </CircleButton>
+            </CircleButton>
             </button>
            
-            </div>
+          </div>
   
         )
   }
 }
 
 export default AddNote;
-
-            /*<Route
-            path ='/add-note'
-            render = { () =>
-            
-            <AddNoteForm
-            />}/>*/

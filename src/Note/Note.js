@@ -6,6 +6,7 @@ import NoteContext from '../App/NoteContext';
 import config from '../config'
 import './Note.css'
 import PropTypes from 'prop-types';
+import NoteError from './NoteError';
 
 
 export default class Note extends React.Component {
@@ -16,8 +17,9 @@ export default class Note extends React.Component {
   
   static propTypes = {
     name: PropTypes.string,
-    id: PropTypes.string}
-    //modified: propTypes.instanceOf(Date)
+    id: PropTypes.string,
+    modified: PropTypes.instanceOf(Date)
+  }
   
 
   handleClickDelete = e => {
@@ -50,9 +52,10 @@ export default class Note extends React.Component {
 
   render() {
     const { name, id, modified } = this.props
-    console.log(this.props)
+    
     return (
       <div className='Note'>
+        <NoteError>
         <h2 className='Note__title'>
           <Link to={`/note/${id}`}>
             {name}
@@ -76,6 +79,7 @@ export default class Note extends React.Component {
             </span>
           </div>
         </div>
+        </NoteError>
       </div>
     )
   }

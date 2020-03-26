@@ -5,15 +5,13 @@ import { countNotesForFolder } from '../notes-helpers'
 import './NoteListNav.css'
 import NoteContext from '../App/NoteContext';
 
+
 class NoteListNav extends Component {
   static contextType = NoteContext;
   
   render () {
-    const noteContext = this.context
-    console.log(noteContext)
-    
+    const noteContext = this.context    
   
-
   return (
     <div className='NoteListNav'>
       <ul className='NoteListNav__list'>
@@ -37,7 +35,6 @@ class NoteListNav extends Component {
     </div>
   )
 }
-
 
 }
 

@@ -4,6 +4,7 @@ import AddNote from '../AddNotes&Folders/AddNote'
 import NoteContext from '../App/NoteContext';
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
+import PropTypes from 'prop-types';
 
 export default class NoteListMain extends React.Component {
   static defaultProps = {
@@ -12,6 +13,11 @@ export default class NoteListMain extends React.Component {
     }
   }
   static contextType = NoteContext
+
+  static propTypes = {
+    folderId: PropTypes.string,
+    note: PropTypes.array
+  }
 
   render() {
     const { folderId } = this.props.match.params

@@ -10,6 +10,7 @@ import AddNoteForm from '../AddNotes&Folders/AddNoteForm';
 import AddFolderForm from '../AddNotes&Folders/AddFolderForm';
 import config from '../config';
 import './App.css';
+import AppError from './AppError';
 
 class App extends Component {
     state = {
@@ -17,52 +18,35 @@ class App extends Component {
         folders: [],
     };
 
-   
-
-            deleteNote = noteId => {
-        const newNotes = this.state.notes.filter(nt =>
-             nt.id !== noteId
-            )
-            this.setState({
-              notes: newNotes
-            })
-          }
-      
-          handleAdd = (note) => {
-          
-        
-            const newNotesArray = [
-              ...this.state.notes,
-              note
-                //id: noteId,
-                //name: noteName, 
-                //modified: modified,
-                //folderId: folderId,
-                //content: noteContent,
-                
-            
-              ]
-                                       
-            this.setState({
-             
-              notes: newNotesArray
+                deleteNote = noteId => {
+                const newNotes = this.state.notes.filter(nt =>
+                    nt.id !== noteId
+                    )
+                    this.setState({
+                     notes: newNotes
                     })
-          };
+                }
+            
+                handleAdd = (note) => {                
+                const newNotesArray = [
+                ...this.state.notes,
+                note]                          
+                    this.setState({
+                     notes: newNotesArray
+                    })
+               };
       
-          handleAddFolder = (folderId, folderName) => {
-            console.log(folderName)
-        
-             const newFolderArray = [
-              ...this.state.folders,
-              { 
+                handleAddFolder = (folderId, folderName) => {
+                const newFolderArray = [
+                ...this.state.folders,
+                { 
                 id: folderId,
                 name: folderName}
-            ]
-      
-            this.setState({
-              folders: newFolderArray,
-             })
-          };
+                ]
+                this.setState({
+                  folders: newFolderArray,
+                 })
+            };
       
 
 
@@ -108,8 +92,14 @@ class App extends Component {
                     onSubmit= {() => history.push('/')}
                                  />
                        }}/>
-                                      
-                    
+                  
+                </>
+            );
+        }
+
+        renderMainRoutes() {
+            return (
+                <>  
                     <Route path="/add-note" 
                     render={({ history }) => {
                     console.log(history)
@@ -118,13 +108,7 @@ class App extends Component {
                     onSubmit= {() => history.push('/')}
                                  />
                        }}/>
-                </>
-            );
-        }
 
-        renderMainRoutes() {
-            return (
-                <>
                     {['/', '/folder/:folderId'].map(path => (
                         <Route
                             exact
@@ -154,17 +138,19 @@ class App extends Component {
            
         return (
             <div className="App">
+                <AppError>
                   <NoteContext.Provider value={contextValue}>
-                <nav className="App__nav">{this.renderNavRoutes()}</nav>
-                
-                <header className="App__header">
-                    <h1>
-                        <Link to="/">Noteful</Link>{' '}
-                        <FontAwesomeIcon icon="check-double" />
-                    </h1>
-                </header>
-                <main className="App__main">{this.renderMainRoutes()}</main>            
-                </NoteContext.Provider>
+                    <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                    
+                    <header className="App__header">
+                        <h1>
+                            <Link to="/">Noteful</Link>{' '}
+                            <FontAwesomeIcon icon="check-double" />
+                        </h1>
+                    </header>
+                        <main className="App__main">{this.renderMainRoutes()}</main>            
+                   </NoteContext.Provider>
+                </AppError>
             </div>
         );
     }

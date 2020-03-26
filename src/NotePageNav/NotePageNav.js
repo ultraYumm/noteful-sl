@@ -4,6 +4,8 @@ import CircleButton from '../CircleButton/CircleButton'
 import NoteContext from '../App/NoteContext';
 import { findNote, findFolder } from '../notes-helpers'
 import './NotePageNav.css'
+import NotePageNavError from './NotePageNavError';
+import PropTypes from 'prop-types';
 
 export default class NotePageNav extends React.Component {
   static defaultProps = {
@@ -15,6 +17,10 @@ export default class NotePageNav extends React.Component {
     }
   }
   static contextType = NoteContext;
+
+  static propTypes = {
+    noteId: PropTypes.string,
+  }
 
   render() {
     const { notes, folders, } = this.context
@@ -34,10 +40,12 @@ export default class NotePageNav extends React.Component {
           Back
         </CircleButton>
         {folder && (
+          <NotePageNavError>
           <h3 className='NotePageNav__folder-name'>
             {folder.name}
           </h3>
-        )}
+          </NotePageNavError> 
+          )}
       </div>
     )
   }

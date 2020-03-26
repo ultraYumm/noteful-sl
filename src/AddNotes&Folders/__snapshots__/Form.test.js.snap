@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotefulForm component renders a form.AddFolderForm by default 1`] = `
+<Route>
+  <Component />
+</Route>
+`;
+
+exports[`NotefulForm component renders a form.AddNoteForm by default 1`] = `
+<Route>
+  <Component />
+</Route>
+`;
+
+exports[`NotefulForm component renders the AddNoteForm given context 1`] = `
+<Route>
+  <Component />
+</Route>
+`;
+
+exports[`NotefulForm component renders the AddNoteForm given context 2`] = `
+<Route>
+  <Component />
+</Route>
+`;

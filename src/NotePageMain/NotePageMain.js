@@ -3,6 +3,7 @@ import Note from '../Note/Note'
 import './NotePageMain.css'
 import { findNote } from '../notes-helpers'
 import NoteContext from '../App/NoteContext';
+import PropTypes from 'prop-types';
 
 export default class NotePageMain extends React.Component {
   static defaultProps = {
@@ -12,6 +13,10 @@ export default class NotePageMain extends React.Component {
   }
   static contextType = NoteContext
 
+  static propTypes = {
+    noteId: PropTypes.string.isRequired,
+  }
+
   handleDeleteNote = noteId => {
     this.props.history.push(`/`)
   }
@@ -20,9 +25,6 @@ export default class NotePageMain extends React.Component {
     const { notes=[] } = this.context
     const { noteId } = this.props.match.params
     const note = findNote(notes, noteId) || { content: '' }
-    console.log(this.context)
-    //console.log(this.props)
-   console.log(note)
     
     return (
       <section className='NotePageMain'>

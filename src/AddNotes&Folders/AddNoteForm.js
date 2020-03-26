@@ -78,12 +78,9 @@ class AddNoteForm extends React.Component {
         this.props.history.push('/')
     }
 
-
     return (
-          
-
         <form className = "noteList" onSubmit={onSubmitForm}>
-            <h2>Create a note</h2>
+         <h2>Create a note</h2>
           <ul className = "inputBox">
 
             <li className = "inputItems">
