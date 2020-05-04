@@ -23,18 +23,24 @@ class AddFolderForm extends React.Component {
     const noteContext = this.context
     console.log(noteContext)
  
-    const newRandomFolderId =  Math.random().toString(36).substring(10, 2)
+    //const newRandomfolderid =  Math.random().toString(36).substring(10, 2)
 
      const onSubmitForm = (e) => {
         e.preventDefault()
 
         let folderToAdd =  e.target.folderToAdd.value
+        console.log(folderToAdd)
+
+      const inputValues = {
+      name: folderToAdd
+    }
 
         fetch(`${config.API_ENDPOINT}/folders/`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
             },
+            body: JSON.stringify(inputValues),
           })
 
           .then(res => {
@@ -51,7 +57,7 @@ class AddFolderForm extends React.Component {
             .then(() => {
 
 
-          this.context.handleAddFolder(newRandomFolderId, folderToAdd)
+          this.context.handleAddFolder(folderToAdd)
         
       })
       this.props.history.push('/')

@@ -11,6 +11,7 @@ import AddFolderForm from '../AddNotes&Folders/AddFolderForm';
 import config from '../config';
 import './App.css';
 import AppError from './AppError';
+import EditNote from '../EditNote/EditNote';
 
 class App extends Component {
     state = {
@@ -36,18 +37,28 @@ class App extends Component {
                     })
                };
       
-                handleAddFolder = (folderId, folderName) => {
+                handleAddFolder = (folderName) => {
                 const newFolderArray = [
                 ...this.state.folders,
                 { 
-                id: folderId,
+                //id: folderid,
                 name: folderName}
                 ]
                 this.setState({
                   folders: newFolderArray,
                  })
             };
-      
+
+            updateNote = updatedNote => {
+                   const newnotes = this.state.notes.map(not =>
+                    (not.id === updatedNote.id)
+                       ? updatedNote
+                       : not
+                   )
+                   this.setState({
+                     notes: newnotes
+                   })
+                 };
 
 
           componentDidMount() {
@@ -74,7 +85,7 @@ class App extends Component {
         renderNavRoutes() {
             return (
                 <>
-                    {['/', '/folder/:folderId'].map(path => (
+                    {['/', '/folder/:folderid'].map(path => (
                         <Route
                             exact
                             key={path}
@@ -108,8 +119,14 @@ class App extends Component {
                     onSubmit= {() => history.push('/')}
                                  />
                        }}/>
+                    
+                    <Route
+                    path='/edit/:noteId'
+                    component={EditNote}
+                    />
 
-                    {['/', '/folder/:folderId'].map(path => (
+                    
+                    {['/', '/folder/:folderid'].map(path => (
                         <Route
                             exact
                             key={path}
@@ -131,10 +148,11 @@ class App extends Component {
             handleAdd: this.handleAdd,
             handleAddFolder: this.handleAddFolder,
             deleteNote: this.deleteNote,
+            updateNote: this.updateNote
            
             }
 
-            console.log(contextValue)
+            //console.log(contextValue)
            
         return (
             <div className="App">
@@ -157,3 +175,5 @@ class App extends Component {
 }
 
 export default App;
+
+

@@ -25,10 +25,10 @@ class AddNoteForm extends React.Component {
     const changeSelection = (value) =>{
 
       const folderArr = noteContext.folders.filter(num=>num.name === value)
-      var folderId = folderArr[0].id  
+      var folderid = folderArr[0].id  
       this.setState({ 
    
-       folderId: folderId,
+       folderid: folderid,
       
       });
     }  
@@ -37,12 +37,12 @@ class AddNoteForm extends React.Component {
       e.preventDefault()
      
     
-    let modified = new Date();
+    //let modified = new Date();
     let note = {
         name: e.target.itemToAdd.value,
         content: e.target.contentToAdd.value,
-        folderId: this.state.folderId,
-        modified: modified,
+        folderid: this.state.folderid,
+        //modified: modified,
       }
 
       fetch(`${config.API_ENDPOINT}/notes/`, {

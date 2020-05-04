@@ -6,6 +6,7 @@ const NoteContext = React.createContext({
   handleAdd: () => {},
   handleAddFolder: () => {},
   deleteNote: () => {},
+  updateNote: () => {},
   
 })
 

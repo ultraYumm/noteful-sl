@@ -21,6 +21,28 @@ export default class Note extends React.Component {
     modified: PropTypes.instanceOf(Date)
   }
   
+  
+
+  /*componentDidMount() {
+    const noteId = this.props.id
+    fetch(config.API_ENDPOINT + `/notes` + `/${noteId}`, {
+      method: 'GET'
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.status)
+      }
+      return res.json()
+      .then(responseData => {
+        this.setState({
+          note:  responseData
+        })
+      })
+      .catch(error => this.setState({ error }))
+  
+  }
+  )
+  }*/
 
   handleClickDelete = e => {
     e.preventDefault()
@@ -52,6 +74,8 @@ export default class Note extends React.Component {
 
   render() {
     const { name, id, modified } = this.props
+
+    console.log(id)
     
     return (
       <div className='Note'>
@@ -60,7 +84,7 @@ export default class Note extends React.Component {
           <Link to={`/note/${id}`}>
             {name}
           </Link>
-        </h2>
+          </h2>
         <button
           className='Note__delete'
           type='button'
@@ -77,6 +101,11 @@ export default class Note extends React.Component {
             <span className='Date'>
               {format(modified, 'Do MMM YYYY')}
             </span>
+          </div>
+          <div>
+          <Link to={`/edit/${id}`}>
+           Edit note
+          </Link>
           </div>
         </div>
         </NoteError>
