@@ -115,5 +115,3 @@ export default class Note extends React.Component {
 
   
 }
-
-
