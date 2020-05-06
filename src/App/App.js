@@ -13,6 +13,8 @@ import './App.css';
 import AppError from './AppError';
 import EditNote from '../EditNote/EditNote';
 
+
+
 class App extends Component {
     state = {
         notes: [],
