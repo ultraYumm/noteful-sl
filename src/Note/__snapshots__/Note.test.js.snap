@@ -53,6 +53,14 @@ exports[`Note Component renders empty with no tabs 1`] = `
           Invalid Date
         </span>
       </div>
+      <div>
+        <Link
+          replace={false}
+          to="/edit/undefined"
+        >
+          Edit note
+        </Link>
+      </div>
     </div>
   </NoteError>
 </div>
@@ -112,6 +120,14 @@ exports[`Note Component renders its given props 1`] = `
         >
           15th Jan 2019
         </span>
+      </div>
+      <div>
+        <Link
+          replace={false}
+          to="/edit/342"
+        >
+          Edit note
+        </Link>
       </div>
     </div>
   </NoteError>

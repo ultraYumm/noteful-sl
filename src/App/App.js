@@ -97,7 +97,7 @@ class App extends Component {
 
                     <Route path="/add-folder" 
                     render={({ history }) => {
-                    console.log(history)
+                   
                     return <AddFolderForm
                     onAddFolder={this.AddFolderForm}
                     onSubmit= {() => history.push('/')}
@@ -113,7 +113,7 @@ class App extends Component {
                 <>  
                     <Route path="/add-note" 
                     render={({ history }) => {
-                    console.log(history)
+                    
                     return <AddNoteForm
                     onAddNote={this.AddNoteForm}
                     onSubmit= {() => history.push('/')}
@@ -152,8 +152,6 @@ class App extends Component {
            
             }
 
-            //console.log(contextValue)
-           
         return (
             <div className="App">
                 <AppError>

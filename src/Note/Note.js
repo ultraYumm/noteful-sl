@@ -22,34 +22,10 @@ export default class Note extends React.Component {
   }
   
   
-
-  /*componentDidMount() {
-    const noteId = this.props.id
-    fetch(config.API_ENDPOINT + `/notes` + `/${noteId}`, {
-      method: 'GET'
-    })
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.status)
-      }
-      return res.json()
-      .then(responseData => {
-        this.setState({
-          note:  responseData
-        })
-      })
-      .catch(error => this.setState({ error }))
-  
-  }
-  )
-  }*/
-
   handleClickDelete = e => {
     e.preventDefault()
     
     const noteId = this.props.id
-    console.log(noteId)
-
 
        fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
@@ -75,8 +51,7 @@ export default class Note extends React.Component {
   render() {
     const { name, id, modified } = this.props
 
-    console.log(id)
-    
+       
     return (
       <div className='Note'>
         <NoteError>

@@ -12,8 +12,7 @@ class NotePageNavError extends React.Component {
       static getDerivedStateFromError(error) {
         return { hasError: true };
       }
-    
-  
+     
 
     render() {
         if (this.state.hasError) {      

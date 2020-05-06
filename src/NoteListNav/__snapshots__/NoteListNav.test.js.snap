@@ -2,8 +2,4 @@
 
 exports[`NoteListNav component renders a .NoteListNav by default 1`] = `undefined`;
 
-exports[`NoteListNav component renders a component 1`] = `undefined`;
-
-exports[`NoteListNav component renders a link in ul for each folder in array 1`] = `undefined`;
-
 exports[`NoteListNav component renders the NoteListNav component 1`] = `undefined`;

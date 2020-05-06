@@ -65,17 +65,17 @@ class AddNoteForm extends React.Component {
         return res.json()
       })
 
-        .then((note) => {
-          this.context.handleAdd(note)
-        })
+      .then((note) => {
+        this.context.handleAdd(note)
+      })
 
-        .catch(error => {
-          console.error({ error })
-        })
-            
+      .catch(error => {
+        console.error({ error })
+      })
+          
 
-        this.props.onAddNote()
-        this.props.history.push('/')
+      this.props.onAddNote()
+      this.props.history.push('/')
     }
 
     return (
@@ -127,7 +127,7 @@ class AddNoteForm extends React.Component {
         </ul>
 
       </form>
-        )
+   )
   }
 }
 

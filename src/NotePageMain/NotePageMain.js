@@ -22,8 +22,26 @@ export default class NotePageMain extends React.Component {
     modified: PropTypes.instanceOf(Date)
   }
   
+
+  componentDidMount() {
+    const noteId = this.props.match.params.noteId
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+      method: 'GET'
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.status)
+      }
+      return res.json()
+      .then(responseData => {
+        this.setState({
+          note:  responseData
+        })
+      })
+      .catch(error => this.setState({ error }))
   
-    
+  }
+  )}
 
   handleDeleteNote = noteId => {
     this.props.history.push(`/`)
@@ -34,19 +52,7 @@ export default class NotePageMain extends React.Component {
     
     const { notes } = this.context
     const { noteId } = this.props.match.params
-    console.log(noteId)
     const note = findNote(notes, noteId) || { content: '' }
-    console.log(noteId)
-    console.log(notes)
-    console.log(notes[0])
-
-    const noteTest = notes.find((note => note.id === noteId)
-    )
-
-    console.log(noteTest)
-  
-
-    
     
 
     return (

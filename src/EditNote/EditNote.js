@@ -21,7 +21,7 @@ class EditNote extends Component {
 
   
 componentDidMount() {
-    const noteId = this.props.id
+    const noteId = this.props.match.params.noteId
     fetch(config.API_ENDPOINT + `/notes` + `/${noteId}`, {
       method: 'GET'
     })
@@ -41,26 +41,23 @@ componentDidMount() {
   )
   }
 
- /* handleChangename = e => {
-    this.setState({ name: e.target.value })
-  };*/
-
 
 handleSubmit = e => {
     e.preventDefault()
       // validation not shown
-     
       const { name,  content} = e.target
       const inputValues = {
       name: name.value,
       content: content.value,
       folderid: this.state.folderid,
     }
-    console.log(inputValues)
+    
 
     this.setState({ error: null })
 
-      fetch(`http://localhost:8000/api/Notes/${this.props.match.params.noteId}`, {
+    //fetch(`${config.API_ENDPOINT}/notes/${noteId}`
+
+      fetch(`${config.API_ENDPOINT}/notes//${this.props.match.params.noteId}`, {
         method: 'PATCH',
         body: JSON.stringify(inputValues),
         headers: {
@@ -70,7 +67,7 @@ handleSubmit = e => {
       })
       .then(res => {
         if (!res.ok) {
-          console.log(res)
+         
            return res.json().then(error => Promise.reject(error))
           }
            })
@@ -78,7 +75,7 @@ handleSubmit = e => {
         this.resetFields(inputValues)
         this.context.updateNote(inputValues)
         window.location.href='/'
-       // this.props.history.push('/')
+ 
       })
       .catch(error => {
         console.error(error)
@@ -141,8 +138,6 @@ handleSubmit = e => {
               id='name'
               placeholder={name}
               required
-              //value={name}
-              //onChange={this.handleChangename}
             />
           </div>
           <div>
@@ -153,7 +148,6 @@ handleSubmit = e => {
               name='content'
               id='content'
               placeholder={content}
-              //value={content}
             />
           </div>
           <div>

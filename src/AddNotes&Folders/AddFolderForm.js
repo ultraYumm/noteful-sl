@@ -54,7 +54,7 @@ class AddFolderForm extends React.Component {
             }
             return res.json()
           })
-            .then(() => {
+          .then(() => {
 
 
           this.context.handleAddFolder(folderToAdd)
@@ -70,30 +70,30 @@ class AddFolderForm extends React.Component {
 
           <form className = "noteList" onSubmit={onSubmitForm}>
             <h2>Create a folder</h2>
-          <ul className = "inputBox">
+              <ul className = "inputBox">
 
-          <li className = "inputItems">
-          <label>Name</label>
-        
-          <input
-            name='folderToAdd'
-            type='text'
-            aria-label='name'
-            placeholder='Great'
-            required
-           />
-           </li>
+                <li className = "inputItems">
+                <label>Name</label>
+              
+                <input
+                  name='folderToAdd'
+                  type='text'
+                  aria-label='name'
+                  placeholder='Great'
+                  required
+                />
+                </li>
 
-             <li className = "inputItems"> 
-            <button className= "addNoteFormButton"
-           
-            type= "submit"        
-          >
-            Add folder
-          </button>
-          </li>
-          
-          </ul>
+                <li className = "inputItems"> 
+                <button className= "addNoteFormButton"
+              
+                type= "submit"        
+                >
+                Add folder
+              </button>
+              </li>
+              
+              </ul>
 
           </form>
         )

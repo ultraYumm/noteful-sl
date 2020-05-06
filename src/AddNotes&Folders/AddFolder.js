@@ -16,18 +16,18 @@ class AddFolder extends React.Component {
             <button className ='AddFolderButton'
             type= "submit"
              >
-           <CircleButton
-          tag={Link}
-          to='/add-folder'
-          type='button'
-          className='NoteListNav__add-folder-button'
-        >
-          <FontAwesomeIcon icon='plus' />
-          <br />
-          Folder
-        </CircleButton>
+              <CircleButton
+              tag={Link}
+              to='/add-folder'
+              type='button'
+              className='NoteListNav__add-folder-button'
+              >
+              <FontAwesomeIcon icon='plus' />
+              <br />
+              Folder
+            </CircleButton>
             </button>
-            </div>
+          </div>
   
         )
   }
